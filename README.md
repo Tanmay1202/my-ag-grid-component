@@ -1,59 +1,51 @@
 # MyAgGridApp
 
+This project is an Angular application featuring an AG Grid table with custom styling.
+
+## Getting Started
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
 
-## Development server
+### Installation
 
-To start a local development server, run:
+1.  Clone the repository (if applicable) or navigate to the project directory.
+2.  Install the dependencies:
 
-```bash
-ng serve
-```
+    ```bash
+    npm install
+    ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Development server
 
-## Code scaffolding
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Code scaffolding
 
-```bash
-ng generate component component-name
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Build
 
-```bash
-ng generate --help
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Building
+### Running unit tests
 
-To build the project run:
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```bash
-ng build
-```
+### Further help
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-## Running unit tests
+## AG Grid Implementation
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+The project uses AG Grid to display data. The grid is configured in `src/app/ag-grid-view/ag-grid-view.ts` with specific column definitions and sample row data. Custom cell renderers (`requestTypeBadge` and `statusBadge`) are used to display styled badges for the 'Request Type' and 'Status' columns.
 
-```bash
-ng test
-```
+## Custom Styling
 
-## Running end-to-end tests
+The AG Grid table's appearance is customized based on a provided screenshot. The styles are defined in `src/app/ag-grid-view/ag-grid-view.css` and override the default Quartz theme. Key styling applied includes:
 
-For end-to-end (e2e) testing, run:
+- Dark blue header with rounded top corners.
+- White rows with light blue horizontal borders.
+- Custom styles for the 'Request Type' and 'Status' badges.
+- Specific coloring for the action icons (View, Logs, and Action).
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Note that `!important` flags were used in some CSS rules to ensure overrides against the default theme.
