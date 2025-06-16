@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
 
@@ -16,6 +16,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   styleUrls: ['./ag-grid-view.css']
 })
 export class AgGridViewComponent {
+  private gridApi!: GridApi;
+
   rowData = [
     { requestNo: '2198400597', requestType: 'Single', materialNo: '', status: 'Draft', creationDate: '21 11 2024 07:43 PM', createdBy: 'Admin' },
     { requestNo: '1934702663', requestType: 'Single', materialNo: '', status: 'Approved', creationDate: '18 11 2024 06:28 PM', createdBy: 'Admin' },
@@ -29,9 +31,9 @@ export class AgGridViewComponent {
   ];
 
   columnDefs: ColDef[] = [
-    { field: 'requestNo', headerName: 'Request No' },
-    { field: 'requestType', headerName: 'Request Type', cellRenderer: this.requestTypeBadge },
-    { field: 'materialNo', headerName: 'Material No' },
+    { field: 'requestNo', headerName: 'Request No.' },
+    { field: 'requestType', headerName: 'Request type', cellRenderer: this.requestTypeBadge },
+    { field: 'materialNo', headerName: 'Material No.' },
     { field: 'status', headerName: 'Status', cellRenderer: this.statusBadge },
     { field: 'creationDate', headerName: 'Creation Date' },
     { field: 'createdBy', headerName: 'Created By' },
@@ -51,6 +53,11 @@ export class AgGridViewComponent {
       width: 80
     }
   ];
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    this.gridApi.sizeColumnsToFit();
+  }
 
   requestTypeBadge(params: any) {
     console.error('requestTypeBadge params:', params);

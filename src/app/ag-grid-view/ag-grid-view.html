@@ -1,5 +1,47 @@
-<ag-grid-angular
-  style="width: 100%; height: 500px;"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs">
-</ag-grid-angular>
+<div class="material-master-container">
+  <header class="app-header">
+    <div class="logo-section">
+      <span class="app-title">Material Master</span>
+    </div>
+    <div class="header-actions">
+      <button class="header-button icon-button">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <button class="header-button extension-button">Extension</button>
+      <button class="header-button create-button">Create</button>
+    </div>
+  </header>
+
+  <div class="filter-section">
+    <div class="status-filters">
+      <button class="status-button active">All</button>
+      <button class="status-button">Draft</button>
+      <button class="status-button">New</button>
+      <button class="status-button">Approved</button>
+      <button class="status-button">Declined</button>
+      <button class="status-button">Completed</button>
+    </div>
+
+    <div class="search-input-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" placeholder="Type your message..." class="search-input">
+      <button class="send-button">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+
+    <div class="chart-buttons">
+      <button class="chart-button">Show me bar chart according to status</button>
+      <button class="chart-button">Show me pie chart according to status</button>
+      <button class="chart-button">Show me list of data of status new</button>
+    </div>
+  </div>
+
+  <ag-grid-angular
+    style="width: 100%; height: 500px;"
+    class="ag-theme-quartz"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>
